@@ -1,0 +1,25 @@
+<h1>Binding</h1>
+<!-- One-way Data Binding: -->
+<!-- 1 Interpolation -->
+<p>{{fullName}}</p>
+<!-- 2 Property Binding -->
+<input type="text" [value]="obj.name">
+<p [textContent] = 'fullName'></p>
+<img [src]="imageUrl" width="100" height="100"><br>
+<!-- 3 Event Binding -->
+<input type="text" (input)="data($event)" value="input">
+<p>{{eventData}}</p>
+<input type="text" (change)="onInputChange($event)" value="change"><br><br>
+<!-- 4 attribute binding -->
+<button [attr.aria-label]="ariaLabel" (click)="logAriaLabel()">Button</button><br><br>
+<!-- class binding -->
+<div [class.active]="isActive">Active Div</div><br>
+<!-- style binding -->
+<span [style.background-color]="bgColor">Styled Div</span> <br> <br>
+
+
+
+
+<!-- 4 Two-way Data Binding -->
+<input type="text" [(ngModel)]="twoWayBinding" value="two way binding">
+<p>{{twoWayBinding}}</p>

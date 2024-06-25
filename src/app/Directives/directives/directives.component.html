@@ -1,0 +1,29 @@
+<h1>Directives</h1>
+<h2>Attribute Directives</h2>
+<!-- ng style -->
+<span [ngStyle]="{ 'background-color': isvalid ? 'green' : 'orange' }">Hi Attribute Directives</span><br><br>
+<button (click) = 'styleToggle()'>{{isvalid ? 'go to orange' : 'go to green'}}</button>
+<!-- ng class  -->
+<p [ngClass]="{'class1': isClass1, 'class2' : isClass2}">This is paragraph</p>
+<button (click) = 'toggleClass()'>ngClass</button><br><br>
+<!-- ng model  -->
+<input type="text" [(ngModel)]="binding" placeholder="Enter Text">
+<p>{{binding}}</p>
+<hr>
+<h1>Structure Directives</h1>
+ <!-- ng if  -->
+<p *ngIf="age > 18 ">You can Drive</p>
+<p *ngIf=" 18 > this.age">You can not drive</p>
+<!-- ng For  -->
+<ul *ngFor="let item of items">
+    <li>{{item}}</li>
+</ul>
+<!-- ng switch  -->
+<div [ngSwitch]="color">
+  <div *ngSwitchCase="'red'">Red Color</div>
+  <div *ngSwitchCase="'green'">Green Color</div>
+  <div *ngSwitchCase="'orange'">Orange Color</div>
+  <div *ngSwitchCase="'yellow'">Yellow Color</div>
+  <div *ngSwitchDefault>Unknown Color</div>
+</div>
+
