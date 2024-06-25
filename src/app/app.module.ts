@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { BindingComponent } from './Bindings/binding/binding.component';
 import { TemplateDrivenComponent } from './forms/template-driven/template-driven.component';
 import { ReactiveComponent } from './forms/reactive/reactive.component';
+import { PipesComponent } from './Pipes/pipes/pipes.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ReactiveComponent } from './forms/reactive/reactive.component';
     DirectivesComponent,
     BindingComponent,
     TemplateDrivenComponent,
-    ReactiveComponent
+    ReactiveComponent,
+    PipesComponent
   ],
   imports: [
     BrowserModule,

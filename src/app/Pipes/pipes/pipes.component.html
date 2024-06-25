@@ -1,0 +1,38 @@
+<h1>Default Pipes</h1>
+<h2>title case</h2>
+<ul *ngFor="let item of items">
+    <li>{{item | titlecase}}</li>
+</ul>
+<h2>upper case</h2>
+<ul *ngFor="let item of items">
+    <li>{{item | uppercase }}</li>
+</ul>
+<h2>lower case</h2>
+<ul *ngFor="let item of items">
+    <li>{{item | lowercase}}</li>
+</ul>
+<h2>Date Pipe</h2>
+<p>{{currentDate | date}}</p>
+<h2>Currency Pipe</h2>
+<p>{{money | currency : 'USD'}}</p>
+<p>{{items | slice:0:3}}</p>
+<!-- <h2>upper case</h2>
+<ul *ngFor="let item of items">
+    <li>{{item | uppercase}}</li>
+</ul>
+<h2>upper case</h2>
+<ul *ngFor="let item of items">
+    <li>{{item | uppercase}}</li>
+</ul>
+<h2>upper case</h2>
+<ul *ngFor="let item of items">
+    <li>{{item | uppercase}}</li>
+</ul>
+<h2>upper case</h2>
+<ul *ngFor="let item of items">
+    <li>{{item | uppercase}}</li>
+</ul>
+<h2>upper case</h2>
+<ul *ngFor="let item of items">
+    <li>{{item | uppercase}}</li>
+</ul> -->
