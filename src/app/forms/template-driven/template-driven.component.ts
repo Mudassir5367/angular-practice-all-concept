@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrl: './template-driven.component.scss'
 })
 export class TemplateDrivenComponent {
+  getData:any
+  formData:any = {
+    name:'',
+    email:'',
+    phone: '',
+    password :'',
 
+  }
+  onSubmit(data:any){
+    console.log(data.value);
+    this.getData = data.value;
+    
+  }
 }

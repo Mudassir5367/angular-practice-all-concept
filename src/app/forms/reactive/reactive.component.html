@@ -1,1 +1,18 @@
-<p>reactive works!</p>
+<h1>Reactive Form</h1>
+<form [formGroup]="reactiveForm" (ngSubmit) = 'onSubmit()'>
+    <div>
+        <input type="text" name="name" placeholder="Enter Full Name" formControlName="name">
+    </div><br>
+    <div>
+        <input type="email" name="email" placeholder="Enter Email" formControlName="email">
+    </div><br>
+    <div>
+        <input type="password" name="password" placeholder="Enter Password" formControlName="password">
+    </div><br>
+    <div>
+        <input type="tel" name="phone" placeholder="Enter Phone Number" formControlName="phone" (keypress)="($event.charCode >= 48 && $event.charCode < 58)">
+    </div><br>
+    <div>
+        <button type="submit" [disabled] = 'reactiveForm.invalid'>Submit</button>
+    </div><br>
+</form>

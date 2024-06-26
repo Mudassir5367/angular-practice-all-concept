@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './pipes.component.scss'
 })
 export class PipesComponent {
-items =[ 'heloo', 'pipes', 'angular', 'react', 'express', 'mongoodb']
+items =[ 'heloo-java-script', 'pipes-java-script', 'angular-java-script', 'react-java-script', 'express-java-script', 'mongoodb-java-script']
 currentDate = new Date()
 money = 1000;
 }

@@ -1,1 +1,23 @@
-<p>template-driven works!</p>
+<h1>Template Driven Form</h1>
+<form #form = 'ngForm' (ngSubmit) = 'onSubmit(form)'>
+    <div>
+        <input type="text" name="name" placeholder="Enter Full Name" ngModel required>
+    </div><br>
+    <div>
+        <input type="email" name="email" placeholder="Enter Email" ngModel required>
+    </div><br>
+    <div>
+        <input type="password" name="password" placeholder="Enter Password" ngModel required>
+    </div><br>
+    <div>
+        <input type="number" name="phone" placeholder="Enter Number" [(ngModel)] = 'formData.phone' required>
+    </div><br>
+    
+    <div>
+        <button type="submit" [disabled]="form.invalid">Submit</button>
+    </div>
+</form>
+<p>{{getData?.name}}</p>
+<p>{{getData?.email}}</p>
+<p>{{getData?.password}}</p>
+<p>{{getData?.phone}}</p>
