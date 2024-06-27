@@ -1,18 +1,32 @@
 <h1>Reactive Form</h1>
-<form [formGroup]="reactiveForm" (ngSubmit) = 'onSubmit()'>
+<form [formGroup]="userForm" (ngSubmit) = 'submitData()'>
+ <div>
     <div>
-        <input type="text" name="name" placeholder="Enter Full Name" formControlName="name">
+        <label for="name">Name: </label>
+        <input type="text" placeholder="Enter Name" name="name" formControlName="name">
     </div><br>
     <div>
-        <input type="email" name="email" placeholder="Enter Email" formControlName="email">
+        <label for="name">Email: </label>
+        <input type="email" placeholder="Enter Email" name="email" formControlName="email">
     </div><br>
-    <div>
-        <input type="password" name="password" placeholder="Enter Password" formControlName="password">
-    </div><br>
-    <div>
-        <input type="tel" name="phone" placeholder="Enter Phone Number" formControlName="phone" (keypress)="($event.charCode >= 48 && $event.charCode < 58)">
-    </div><br>
-    <div>
-        <button type="submit" [disabled] = 'reactiveForm.invalid'>Submit</button>
-    </div><br>
+
+    <div formGroupName="address">
+        <label for="street">Street: </label>
+        <input type="text" placeholder="Enter Street" name="street" formControlName="street">
+
+        <label for="name">City: </label>
+        <input type="text" placeholder="Enter City" name="city" formControlName="city">
+    </div>
+    <div formArrayName="phoneNumbers">
+        <div *ngFor="let arr of phoneNumbers.controls; let i = index">
+            <label>Phone Number {{i+1}}: </label>
+            <input type="number" [formControlName]="i">
+            <button type="submit" (click)="removerPhoneNumber(i)">Remove Phone Number</button><br>
+        </div>
+    </div>
+    <br>
+    <button type="submit" (click)="addPhoneNumber()">Add Phone Number</button>
+    
+    <button type="submit" [disabled] = '!userForm.valid'>Submit</button>
+    </div>
 </form>

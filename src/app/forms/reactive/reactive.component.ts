@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive',
@@ -7,21 +7,61 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './reactive.component.scss'
 })
 export class ReactiveComponent {
-reactiveForm:FormGroup
-constructor(private formBuilder: FormBuilder){
-  this.reactiveForm = this.formBuilder.group({
-name:['', [Validators.required, Validators.min(3)]],
-email:['', [Validators.required, Validators.email]],
-password:['', [Validators.required, Validators.minLength(5)]],
-phone:['', [Validators.required,  Validators.pattern(/^\d{10}$/)]],
-  })
-}
-onSubmit(){
-  if(this.reactiveForm.invalid){
-    return
-  }else{
-    console.log(this.reactiveForm.value);
-    this.reactiveForm.reset();
+  userForm!: FormGroup;
+  constructor(private formBuilder:FormBuilder){
+    this.userForm = this.formBuilder.group({
+      name:['', Validators.required],
+      email:[
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}$')
+        ],
+      ],
+      address:this.formBuilder.group({
+        street:['', Validators.required],
+        city:[
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[A-Za-z]+$')
+        ],
+      ],
+    
+    }),
+    phoneNumbers:this.formBuilder.array([
+      this.formBuilder.control('',[
+        Validators.required,
+        Validators.pattern(/^\d{10}$/)
+      ])
+    ])
+  });
   }
-}
+  
+  get phoneNumbers(){
+    return this.userForm.get('phoneNumbers') as FormArray;
+  }
+  
+  removerPhoneNumber(index:number){
+    this.phoneNumbers.removeAt(index);
+  }
+  
+  addPhoneNumber(){
+    this.phoneNumbers.push(this.formBuilder.control('',[
+      Validators.required,
+      Validators.pattern(/^\d{10}$/)
+    ]));
+  }
+  
+  
+  submitData(){
+    if(this.userForm.valid){
+      let a = this.userForm.value
+      console.log(a);
+      console.log(a.address);
+      // console.log(this.userForm);
+      
+      
+    }
+  }
 }

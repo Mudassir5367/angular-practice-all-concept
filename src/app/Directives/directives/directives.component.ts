@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './directives.component.scss'
 })
 export class DirectivesComponent {
+  // Component Directive Definition
+  // Definition: A component directive is a directive with a template. Components are the most common of the three directives and are a fundamental building block of Angular applications. Every component in Angular is essentially a directive with a template.
   isvalid:boolean = false;
   isClass1 = false;
   isClass2 = false;
