@@ -1,0 +1,19 @@
+<h1>Parent Component</h1>
+<form [formGroup]="userInfoForm" (ngSubmit) = 'onSubmit()'>
+    <div>
+        <input type="text" name="fullName" placeholder="Enter Full Name" formControlName="fullName">
+    </div><br>
+    <div>
+        <input type="email" name="email" placeholder="Enter E-mail" formControlName="email">
+    </div><br>
+    <div>
+        <input type="number" name="age" placeholder="Enter Age" formControlName="age">
+    </div><br>
+    <div>
+        <input type="text" name="address" placeholder="Enter Address" formControlName="address">
+    </div><br>
+    <div><button type="submit">Submit</button></div><br>
+</form><hr>
+<app-child [dataToChild] = 'formData'></app-child>
+
+

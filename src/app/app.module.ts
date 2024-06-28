@@ -10,6 +10,8 @@ import { TemplateDrivenComponent } from './forms/template-driven/template-driven
 import { ReactiveComponent } from './forms/reactive/reactive.component';
 import { PipesComponent } from './Pipes/pipes/pipes.component';
 import { RemoveDashPipe } from './CustomPipe/remove-dash.pipe';
+import { ParentComponent } from './components-communication/parent/parent.component';
+import { ChildComponent } from './components-communication/child/child.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,9 @@ import { RemoveDashPipe } from './CustomPipe/remove-dash.pipe';
     TemplateDrivenComponent,
     ReactiveComponent,
     PipesComponent,
-    RemoveDashPipe, 
+    RemoveDashPipe,
+    ParentComponent,
+    ChildComponent, 
   ],
   imports: [
     BrowserModule,
