@@ -22,7 +22,6 @@ export class ParentComponent {
       return;
     }else{
       this.formData = this.userInfoForm.value;
-      this.formData = [...this.formData]
       this.userInfoForm.reset();  // reset form fields after successful submission
       console.log(this.formData);
       
