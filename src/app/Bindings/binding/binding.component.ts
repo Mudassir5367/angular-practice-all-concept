@@ -11,6 +11,7 @@ twoWayBinding:string = '';
 fName:string = 'Mudassir'
 lName:string = 'Hussain'
 fullName:string = this.fName + ' ' + this.lName
+holder = 'attribute binding s'
 // property binding
 obj = {
   name: 'Mudassir',
@@ -36,5 +37,4 @@ ariaLabel: string = 'Submit Button';
 isActive: boolean = true;
 // style binding
 bgColor: string = 'lightblue';
-
 }

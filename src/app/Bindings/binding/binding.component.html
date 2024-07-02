@@ -11,6 +11,7 @@
 <p>{{eventData}}</p>
 <input type="text" (change)="onInputChange($event)" value="change"><br><br>
 <!-- 4 attribute binding -->
+<input type="text" [attr.placeholder] = 'holder'><br>
 <button [attr.aria-label]="ariaLabel" (click)="logAriaLabel()">Button</button><br><br>
 <!-- class binding -->
 <div [class.active]="isActive">Active Div</div><br>

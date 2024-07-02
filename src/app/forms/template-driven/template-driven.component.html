@@ -1,13 +1,13 @@
 <h1>Template Driven Form</h1>
 <form #form = 'ngForm' (ngSubmit) = 'onSubmit(form)'>
     <div>
-        <input type="text" name="name" placeholder="Enter Full Name" ngModel required>
+        <input type="text" name="name" placeholder="Enter Full Name" [(ngModel)] = 'formData.fullName' required>
     </div><br>
     <div>
-        <input type="email" name="email" placeholder="Enter Email" ngModel required>
+        <input type="email" name="email" placeholder="Enter Email" [(ngModel)] ='formData.email' required>
     </div><br>
     <div>
-        <input type="password" name="password" placeholder="Enter Password" ngModel required>
+        <input type="password" name="password" placeholder="Enter Password" [(ngModel)]="formData.password" required>
     </div><br>
     <div>
         <input type="number" name="phone" placeholder="Enter Number" [(ngModel)] = 'formData.phone' required>
