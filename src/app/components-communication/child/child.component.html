@@ -14,7 +14,7 @@
                 <td>{{ item.email }}</td>
                 <td>{{ item.age }}</td>
                 <td>{{ item.address }}</td>
-            <td><button>Edit</button></td>
+            <td><button (click) = 'update(item)'>Edit</button></td>
             <td><button (click) = 'removeItem(item)'>Remove</button></td>
         </tr>
         <tr *ngIf="dataFromParent?.length">

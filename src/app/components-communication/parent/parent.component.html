@@ -14,6 +14,6 @@
     </div><br>
     <div><button type="submit">Submit</button></div><br>
 </form><hr>
-<app-child [dataToChild] = 'formData'></app-child>
+<app-child [dataToChild] = 'formData' (dataToParent) = 'dataFromChild($event)'></app-child>
 
 

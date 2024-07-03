@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -7,6 +7,7 @@ import { Component, Input, SimpleChanges } from '@angular/core';
 })
 export class ChildComponent {
   @Input() dataToChild:any = ''
+  @Output() dataToParent: EventEmitter<any> = new EventEmitter<any>();
   dataFromParent:any = [];
 constructor(){}
 // ngOnInit(){
@@ -22,6 +23,11 @@ ngOnChanges(changes: SimpleChanges) {
     this.dataFromParent.push({ ...changes['dataToChild'].currentValue });
     console.log('Data array:', this.dataFromParent);
   }
+}
+update(data: any) {
+  console.log(data);
+  this.dataToParent.emit(data);
+  
 }
 removeItem(item: number){
 // console.log(item);

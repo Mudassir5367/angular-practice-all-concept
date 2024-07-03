@@ -27,5 +27,9 @@ export class ParentComponent {
       
     }
   }
+  dataFromChild(child:any){
+    console.log('Data from child:', child);
+    this.userInfoForm.patchValue(child);
+  }
 
 }
