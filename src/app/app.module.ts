@@ -12,6 +12,14 @@ import { PipesComponent } from './Pipes/pipes/pipes.component';
 import { RemoveDashPipe } from './CustomPipe/remove-dash.pipe';
 import { ParentComponent } from './components-communication/parent/parent.component';
 import { ChildComponent } from './components-communication/child/child.component';
+import { AngularMaterialTestingComponent } from './angular-material-testing/angular-material-testing.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import {NgFor} from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,13 +30,21 @@ import { ChildComponent } from './components-communication/child/child.component
     PipesComponent,
     RemoveDashPipe,
     ParentComponent,
-    ChildComponent, 
+    ChildComponent,
+    AngularMaterialTestingComponent, 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    MatMenuModule,
+    MatButtonModule,
+    NgFor
   ],
   providers: [],
   bootstrap: [AppComponent]
