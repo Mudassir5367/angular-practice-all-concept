@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import {NgFor} from '@angular/common';
+import { PrintComponent } from './print/print.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import {NgFor} from '@angular/common';
     RemoveDashPipe,
     ParentComponent,
     ChildComponent,
-    AngularMaterialTestingComponent, 
+    AngularMaterialTestingComponent,
+    PrintComponent, 
   ],
   imports: [
     BrowserModule,
