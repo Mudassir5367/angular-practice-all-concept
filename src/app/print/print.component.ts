@@ -57,106 +57,106 @@ ngOnInit() {
     this.imageUrl = "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630"
    });
 }
-// print(){
-//   const contentToPrint = this.elementRef.nativeElement.querySelector('.abc')
-//   if(contentToPrint){
-//     const clonedConetent =  contentToPrint.cloneNode(true) as HTMLElement;
-//     const printContainer = document.createElement('div');
-//     printContainer.style.position = 'absolute';
-//     printContainer.style.top = '0px';
-//     printContainer.style.left = '0px';
-//     printContainer.style.width = '100%';
-//     printContainer.style.height = '100%';
-//     printContainer.style.zIndex = '1';
-//     printContainer.innerHTML = clonedConetent.innerHTML;
-//     const handleBeforePrint = ()=>{
-//       document.body.appendChild(printContainer);
-//       Array.from(document.body.children).forEach((child)=>{
-//         if(child !== printContainer){
-//           (child as HTMLElement).style.display = 'none';
-//         }
-//       })
-//     }
-//     const handleAfterPrint = ()=>{
-//       document.body.appendChild(printContainer);
-//       Array.from(document.body.children).forEach((child)=>{
-//         if(child !== printContainer){
-//           (child as HTMLElement).style.display = '';
-//         }
-//       });
-//       window.removeEventListener('beforeprint', handleBeforePrint)
-//       window.removeEventListener('afterprint', handleAfterPrint)
-//     }
-//     window.removeEventListener('beforeprint', handleBeforePrint)
-//     window.removeEventListener('afterprint', handleAfterPrint)
-//     window.print()
-//   }else{}
-
-// }
-
 print(){
-  const contentToPrint = this.elementRef.nativeElement.querySelector('.abc');
-  
+  const contentToPrint = this.elementRef.nativeElement.querySelector('.abc')
   if(contentToPrint){
-    const clonedContent = contentToPrint.cloneNode(true) as HTMLElement;
+    const clonedConetent =  contentToPrint.cloneNode(true) as HTMLElement;
     const printContainer = document.createElement('div');
-    
     printContainer.style.position = 'absolute';
     printContainer.style.top = '0px';
     printContainer.style.left = '0px';
     printContainer.style.width = '100%';
     printContainer.style.height = '100%';
     printContainer.style.zIndex = '1';
-    printContainer.innerHTML = clonedContent.innerHTML;
-
-    const images = printContainer.querySelectorAll('img');
-    let loadedImagesCount = 0;
-
-    // Handle before and after print events
-    const handleBeforePrint = () => {
+    printContainer.innerHTML = clonedConetent.innerHTML;
+    const handleBeforePrint = ()=>{
       document.body.appendChild(printContainer);
-      Array.from(document.body.children).forEach((child) => {
-        if (child !== printContainer) {
+      Array.from(document.body.children).forEach((child)=>{
+        if(child !== printContainer){
           (child as HTMLElement).style.display = 'none';
         }
-      });
-    };
-
-    const handleAfterPrint = () => {
-      document.body.removeChild(printContainer);
-      Array.from(document.body.children).forEach((child) => {
-        if (child !== printContainer) {
+      })
+    }
+    const handleAfterPrint = ()=>{
+      document.body.appendChild(printContainer);
+      Array.from(document.body.children).forEach((child)=>{
+        if(child !== printContainer){
           (child as HTMLElement).style.display = '';
         }
       });
-      window.removeEventListener('beforeprint', handleBeforePrint);
-      window.removeEventListener('afterprint', handleAfterPrint);
-    };
-
-    // Check when all images are loaded
-    if (images.length > 0) {
-      images.forEach((img) => {
-        img.onload = () => {
-          loadedImagesCount++;
-          if (loadedImagesCount === images.length) {
-            window.print(); // Print when all images are loaded
-          }
-        };
-        img.onerror = () => {
-          loadedImagesCount++;
-          if (loadedImagesCount === images.length) {
-            window.print(); // Print even if there are errors in loading some images
-          }
-        };
-      });
-    } else {
-      // If there are no images, proceed to print
-      window.print();
+      window.removeEventListener('beforeprint', handleBeforePrint)
+      window.removeEventListener('afterprint', handleAfterPrint)
     }
+    window.removeEventListener('beforeprint', handleBeforePrint)
+    window.removeEventListener('afterprint', handleAfterPrint)
+    window.print()
+  }else{}
 
-    window.addEventListener('beforeprint', handleBeforePrint);
-    window.addEventListener('afterprint', handleAfterPrint);
-  }
 }
+
+// print(){
+//   const contentToPrint = this.elementRef.nativeElement.querySelector('.abc');
+  
+//   if(contentToPrint){
+//     const clonedContent = contentToPrint.cloneNode(true) as HTMLElement;
+//     const printContainer = document.createElement('div');
+    
+//     printContainer.style.position = 'absolute';
+//     printContainer.style.top = '0px';
+//     printContainer.style.left = '0px';
+//     printContainer.style.width = '100%';
+//     printContainer.style.height = '100%';
+//     printContainer.style.zIndex = '1';
+//     printContainer.innerHTML = clonedContent.innerHTML;
+
+//     const images = printContainer.querySelectorAll('img');
+//     let loadedImagesCount = 0;
+
+//     // Handle before and after print events
+//     const handleBeforePrint = () => {
+//       document.body.appendChild(printContainer);
+//       Array.from(document.body.children).forEach((child) => {
+//         if (child !== printContainer) {
+//           (child as HTMLElement).style.display = 'none';
+//         }
+//       });
+//     };
+
+//     const handleAfterPrint = () => {
+//       document.body.removeChild(printContainer);
+//       Array.from(document.body.children).forEach((child) => {
+//         if (child !== printContainer) {
+//           (child as HTMLElement).style.display = '';
+//         }
+//       });
+//       window.removeEventListener('beforeprint', handleBeforePrint);
+//       window.removeEventListener('afterprint', handleAfterPrint);
+//     };
+
+//     // Check when all images are loaded
+//     if (images.length > 0) {
+//       images.forEach((img) => {
+//         img.onload = () => {
+//           loadedImagesCount++;
+//           if (loadedImagesCount === images.length) {
+//             window.print(); // Print when all images are loaded
+//           }
+//         };
+//         img.onerror = () => {
+//           loadedImagesCount++;
+//           if (loadedImagesCount === images.length) {
+//             window.print(); // Print even if there are errors in loading some images
+//           }
+//         };
+//       });
+//     } else {
+//       // If there are no images, proceed to print
+//       window.print();
+//     }
+
+//     window.addEventListener('beforeprint', handleBeforePrint);
+//     window.addEventListener('afterprint', handleAfterPrint);
+//   }
+// }
 
 }
