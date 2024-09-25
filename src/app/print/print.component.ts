@@ -57,10 +57,11 @@ ngOnInit() {
     this.imageUrl = "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630"
    });
 }
-print(){
-  const contentToPrint = this.elementRef.nativeElement.querySelector('.abc')
-  if(contentToPrint){
-    const clonedConetent =  contentToPrint.cloneNode(true) as HTMLElement;
+print() {
+  const contentToPrint = this.elementRef.nativeElement.querySelector('.abc');
+  
+  if (contentToPrint) {
+    const clonedContent = contentToPrint.cloneNode(true) as HTMLElement;
     const printContainer = document.createElement('div');
     printContainer.style.position = 'absolute';
     printContainer.style.top = '0px';
@@ -68,31 +69,58 @@ print(){
     printContainer.style.width = '100%';
     printContainer.style.height = '100%';
     printContainer.style.zIndex = '1';
-    printContainer.innerHTML = clonedConetent.innerHTML;
-    const handleBeforePrint = ()=>{
+    printContainer.innerHTML = clonedContent.innerHTML;
+    
+    const handleBeforePrint = () => {
       document.body.appendChild(printContainer);
-      Array.from(document.body.children).forEach((child)=>{
-        if(child !== printContainer){
+      Array.from(document.body.children).forEach((child) => {
+        if (child !== printContainer) {
           (child as HTMLElement).style.display = 'none';
         }
-      })
-    }
-    const handleAfterPrint = ()=>{
-      document.body.appendChild(printContainer);
-      Array.from(document.body.children).forEach((child)=>{
-        if(child !== printContainer){
+      });
+    };
+
+    const handleAfterPrint = () => {
+      document.body.removeChild(printContainer);
+      Array.from(document.body.children).forEach((child) => {
+        if (child !== printContainer) {
           (child as HTMLElement).style.display = '';
         }
       });
-      window.removeEventListener('beforeprint', handleBeforePrint)
-      window.removeEventListener('afterprint', handleAfterPrint)
-    }
-    window.removeEventListener('beforeprint', handleBeforePrint)
-    window.removeEventListener('afterprint', handleAfterPrint)
-    window.print()
-  }else{}
+      window.removeEventListener('beforeprint', handleBeforePrint);
+      window.removeEventListener('afterprint', handleAfterPrint);
+    };
 
+    window.addEventListener('beforeprint', handleBeforePrint);
+    window.addEventListener('afterprint', handleAfterPrint);
+    
+    // Promise to handle print
+    const immediateFn = function (): Promise<void> {
+      return new Promise<void>((resolve) => {
+        window.print();
+        resolve(); // Explicitly resolving with void
+      });
+    };
+    
+    immediateFn().then(() => {
+      console.log('Print complete');
+    });
+  }
+  // ============
+//   const immediateFn = function (): Promise<string> {
+//     return new Promise((resolve) => {
+//       window.print();
+//       resolve('done'); // Resolving with a string
+//     });
+//   };
+  
+//   immediateFn().then((result) => {
+//     console.log(result); // "done" will be logged here
+//   });
+// }
+  //========
 }
+
 
 // print(){
 //   const contentToPrint = this.elementRef.nativeElement.querySelector('.abc');
