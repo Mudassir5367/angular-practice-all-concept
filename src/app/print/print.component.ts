@@ -1,11 +1,12 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-print',
   templateUrl: './print.component.html',
   styleUrl: './print.component.scss'
 })
-export class PrintComponent {
+export class PrintComponent implements OnInit {
+    public imageUrl = "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630"
 // print(){
 //   const popup = window.open("", "_blank", "width=1000,height=680,titlebar=yes");
 
@@ -51,6 +52,11 @@ export class PrintComponent {
   
 // }
 constructor(private elementRef:ElementRef){}
+ngOnInit() {
+   setTimeout(() => {
+    this.imageUrl = "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630"
+   });
+}
 // print(){
 //   const contentToPrint = this.elementRef.nativeElement.querySelector('.abc')
 //   if(contentToPrint){
