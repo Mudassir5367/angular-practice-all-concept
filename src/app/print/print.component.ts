@@ -1,12 +1,19 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostBinding, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-print',
   templateUrl: './print.component.html',
   styleUrl: './print.component.scss'
 })
-export class PrintComponent implements OnInit {
-    public imageUrl = "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630"
+export class PrintComponent implements OnInit,AfterViewInit {
+  public domElement:any;
+  public img1 = "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/"
+    public imageUrl = "2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630"
+    @HostBinding('style.--image') image = "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630"
+    @HostBinding('style.--nameOfVar') nameOfVar = 'green';
+    // With ElementRef
+  @HostBinding('style.--bgImg') image1 = this.img1 + '2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630';
+
 // print(){
 //   const popup = window.open("", "_blank", "width=1000,height=680,titlebar=yes");
 
@@ -51,11 +58,18 @@ export class PrintComponent implements OnInit {
 //   }
   
 // }
-constructor(private elementRef:ElementRef){}
+constructor(private elementRef:ElementRef,private renderer: Renderer2){}
 ngOnInit() {
    setTimeout(() => {
-    this.imageUrl = "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630"
+    this.imageUrl = `${this.img1}2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630`
    });
+  this.domElement = this.elementRef.nativeElement;
+   let ref = document.getElementById('img')
+  //  this.renderer.setStyle(ref,"background-image", `url(${this.image})`);
+
+}
+ngAfterViewInit() {
+  this.elementRef.nativeElement.style.setProperty('--bgImg',`url(${this.image1})`);
 }
 print() {
   const contentToPrint = this.elementRef.nativeElement.querySelector('.abc');
